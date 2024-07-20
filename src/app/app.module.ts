@@ -14,6 +14,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CarouselModule } from 'angular2-carousel';
+import { UrlConstant } from './services/url-constant.service';
+import { DataService } from './services/data.service';
 
 
 
@@ -37,7 +39,7 @@ import { CarouselModule } from 'angular2-carousel';
     HttpClientModule,
     
   ],
-  providers: [],
+  providers: [DataService,UrlConstant],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

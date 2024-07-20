@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { UrlConstant } from 'src/app/services/url-constant.service';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  users:any;
   products = [
     {
       name: 'Product 1',
@@ -66,9 +69,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentIndex = 0;
   autoSlideInterval: any;
 
-  constructor() { }
+  constructor(private dataService:DataService,  private urlConstant: UrlConstant) { }
 
   ngOnInit() {
+    this.getAllUsers();
     this.startAutoSlide();
     const prevButton = document.querySelector('.prev');
     const nextButton = document.querySelector('.next');
@@ -111,5 +115,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (carouselItems) {
       carouselItems.style.transform = `translateX(-${this.currentIndex * 100}%)`;
     }
+  }
+
+  getAllUsers(){
+    const url = `${this.urlConstant.SERVER_PORT}user`;
+    this.dataService.getAllObjects(url).subscribe(
+      (data: any[]) => {
+        console.log("data"+JSON.stringify(data));
+        this.users = data;
+      },
+      error => {
+        console.error('Error fetching products', error);
+      }
+    );
   }
 }
