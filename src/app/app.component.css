@@ -1,0 +1,18 @@
+/* styles.css */
+.header-container {
+    text-align: center;
+  }
+  
+  .logo {
+    width: 300px;
+  }
+  
+  .link-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .link-item {
+    margin: 1em 0;
+  }
+  

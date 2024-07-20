@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="row category-section">
+  <div class="category" *ngFor="let category of categories">
+    <a [routerLink]="['/category', category.name]" class="category-link">
+      <img [src]="category.image" alt="{{ category.name }}" class="category-image">
+      <div class="category-name">{{ category.name }}</div>
+    </a>
+  </div>
+</div>
+
+<div class="carousel">
+  <button class="prev">&#10094;</button>
+  <div class="carousel-items">
+    <div class="carousel-item" *ngFor="let product of products">
+      <div class="product-card">
+        <img [src]="product.image" alt="{{ product.name }}" class="carousel-image">
+        <div class="product-info">
+          <h2>{{ product.name }}</h2>
+          <p>{{ product.description }}</p>
+          <button mat-raised-button color="primary">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="next">&#10095;</button>
+</div>
+

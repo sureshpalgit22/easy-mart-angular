@@ -1,0 +1,57 @@
+/* header.component.css */
+header {
+    background-color: #f8f8f8; /* Light background color for the header */
+    padding: 10px 20px; /* Add padding for spacing */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for a subtle effect */
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 50px; /* Adjust height as needed */
+    margin-right: 10px; /* Space between logo and site name */
+  }
+  
+  .site-name {
+    font-size: 24px; /* Adjust font size as needed */
+    color: #333; /* Text color */
+  }
+  
+  .search-bar-container {
+    flex: 1; /* Take up available space */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-bar {
+    width: 100%; /* Full width */
+    max-width: 400px; /* Limit width */
+    padding: 5px 10px; /* Padding inside the search bar */
+    border: 1px solid #ccc; /* Border for the search bar */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .header-actions {
+    display: flex;
+    gap: 15px; /* Space between action links */
+  }
+  
+  .header-link {
+    text-decoration: none;
+    color: #007bff; /* Link color */
+    font-size: 16px; /* Font size for links */
+  }
+  
+  .header-link:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
