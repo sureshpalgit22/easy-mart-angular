@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private dataService:DataService,  private urlConstant: UrlConstant) { }
 
   ngOnInit() {
-    this.getAllUsers();
+  //  this.getAllUsers();
     this.startAutoSlide();
     const prevButton = document.querySelector('.prev');
     const nextButton = document.querySelector('.next');

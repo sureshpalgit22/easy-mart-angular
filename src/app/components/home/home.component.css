@@ -42,12 +42,17 @@
   }
   .category-section {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: nowrap; /* Prevent wrapping to ensure all items stay in one row */
+    justify-content: space-around; /* Evenly space the items */
+    align-items: center; /* Center items vertically */
     margin: 20px 0;
+    overflow-x: auto; /* Allow horizontal scrolling if content overflows */
   }
   
   .category {
     text-align: center;
+    flex: 1; /* Make sure items can grow and shrink evenly */
+    max-width: 150px; /* Optional: Set a maximum width to prevent items from getting too wide */
   }
   
   .category-image {
@@ -65,4 +70,5 @@
     text-decoration: none;
     color: inherit;
   }
+  
   
