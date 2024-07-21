@@ -1,4 +1,3 @@
-<!-- header.component.html -->
 <header>
   <div class="header-content">
     <div class="logo-container">
@@ -9,7 +8,22 @@
       <input type="text" placeholder="Search..." class="search-bar">
     </div>
     <div class="header-actions">
-      <a routerLink="/login" class="header-link">Login</a>
+      <div class="dropdown">
+        <button class="dropdown-button">Login</button>
+        <div class="dropdown-content">
+          <a routerLink="/login/customer">Customer Login</a>
+          <a routerLink="/login/seller">Seller Login</a>
+          <a routerLink="/login/admin">Admin Login</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button">Signup</button>
+        <div class="dropdown-content">
+          <a routerLink="/signup/customer">Customer Signup</a>
+          <a routerLink="/signup/seller">Seller Signup</a>
+          <a routerLink="/signup/admin">Admin Signup</a>
+        </div>
+      </div>
       <a routerLink="/cart" class="header-link">Cart</a>
     </div>
   </div>

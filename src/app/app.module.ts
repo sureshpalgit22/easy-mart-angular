@@ -16,6 +16,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { CarouselModule } from 'angular2-carousel';
 import { UrlConstant } from './services/url-constant.service';
 import { DataService } from './services/data.service';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 
@@ -27,7 +29,9 @@ import { DataService } from './services/data.service';
     FooterComponent,
     HomeComponent,
     ProductComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
