@@ -1,25 +1,91 @@
+<app-header></app-header>
 <div class="seller-dashboard-container">
-  <nav class="sidebar">
+  <!-- <button class="toggle-button" (click)="toggleSidebar()">
+    &#9776; 
+  </button> -->
+  <nav class="sidebar" [ngClass]="{'hidden': isSidebarHidden}">
     <div class="seller-info">
-      <div class="circle">{{ sellerInitial }} S</div>
+      <div class="circle">{{ sellerInitial }}</div>
       <div class="greeting">
         <p>Hello!</p>
-        <p>{{ sellerName }} Suresh Chandra Pal</p>
+        <p>{{ sellerName }}</p>
       </div>
       <hr>
     </div>
     <ul>
-      <li><a href="#">Dashboard</a></li>
-      <li><a href="#">Add Product</a></li>
-      <li><a href="#">Manage Products</a></li>
-      <li><a href="#">Orders</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Logout</a></li>
+      <li (click)="setNavOption('dashboard')">Dashboard</li>
+      <li (click)="setNavOption('addProduct')">Add Product</li>
+      <li (click)="setNavOption('manageProducts')">Manage Products</li>
+      <li  (click)="setNavOption('orders')">Orders</li>
+      <li (click)="setNavOption('profile')">Profile</li>
+      <li>Logout</li>
     </ul>
   </nav>
   
   <div class="main-content">
-    <h2 class="text-center">Seller Dashboard</h2>
+    <!-- Dashboard Start Here -->
+
+    <div *ngIf="navOption=='dashboard' || navOption==''">
+      <h2 class="text-center">Seller Dashboard</h2>
+    </div>
+      <!-- Dashboard End Here -->
+
+       <!-- Add Product Start Here -->
+    <div *ngIf="navOption=='addProduct'">
+      <h2 class="text-center">Add Product</h2>
+      <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div>
+          <label for="name">Product Name:</label>
+          <input id="name" name="name" [(ngModel)]="product.name" required>
+        </div>
+        <div>
+          <label for="price">Product Price:</label>
+          <input id="price" name="price" [(ngModel)]="product.price" required type="number">
+        </div>
+        <div>
+          <label for="description">Product Description:</label>
+          <textarea id="description" name="description" [(ngModel)]="product.description" required></textarea>
+        </div>
+        <div>
+          <label for="brandName">Brand Name:</label>
+          <input id="brandName" name="brandName" [(ngModel)]="product.brandName" required>
+        </div>
+        <div>
+          <label for="productCategory">Product Category:</label>
+          <input id="productCategory" name="productCategory" [(ngModel)]="product.productCategory" required>
+        </div>
+        <div>
+          <label for="quantity">Quantity:</label>
+          <input id="quantity" name="quantity" [(ngModel)]="product.quantity" required type="number">
+        </div>
+        <div>
+          <label for="image">Product Image:</label>
+          <input id="image" type="file" (change)="onFileSelected($event)" required>
+        </div>
+        <button type="submit">{{ editMode ? 'Update' : 'Save' }} Product</button>
+        <button type="button" (click)="onReset(productForm)" class="text-right">Reset</button>
+      </form>
+    </div>
+     <!-- Add Product End Here -->
+
+       <!-- Manage Products Start Here -->
+    <div *ngIf="navOption=='manageProducts'">
+      <h2 class="text-center">Manage Products</h2>
+    </div>
+    <!-- Manage Products End Here -->
+
+       <!-- Orders Start Here -->
+    <div *ngIf="navOption=='orders'">
+      <h2 class="text-center">Orders</h2>
+    </div>
+    <!-- Orders Start Here -->
+
+       <!-- Profile End Here -->
+    <div *ngIf="navOption=='profile'">
+      <h2 class="text-center">Profile</h2>
+    </div>
+     <!-- Profile End Here -->
+     
     
     <!-- Form for adding/updating products -->
     <!-- <form [formGroup]="productForm" (ngSubmit)="onSubmit()">

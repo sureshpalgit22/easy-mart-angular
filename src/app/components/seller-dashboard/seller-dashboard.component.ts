@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Product } from 'src/app/entity/product';
 
 @Component({
@@ -8,50 +8,74 @@ import { Product } from 'src/app/entity/product';
   styleUrls: ['./seller-dashboard.component.css']
 })
 export class SellerDashboardComponent implements OnInit {
-  // productForm: FormGroup;
-  // products: Product[] = [];
-  // editMode = false;
-  // editProductId: number | null = null;
+  products: Product[] = []; // This should be populated from a service
+  isSidebarHidden = false;
+  navOption: string = '';
+  selectedFile: File | null = null;
+  editMode: boolean = false;
+  sellerName: string = 'Suresh Chandra Pal'; // Example value, replace with actual data
+  sellerInitial: string = 'S'; // Example value, replace with actual data
+  product: Product = new Product();
+  
+  constructor() {}
 
-  constructor() {
-    // this.productForm = this.fb.group({
-    //   name: ['', Validators.required],
-    //   price: ['', [Validators.required, Validators.min(0)]],
-    //   description: ['', Validators.required]
-   // });
+  ngOnInit() {
+    // Load products, seller details, etc. from service
   }
 
-  ngOnInit() {}
+  onSubmit(): void {
+    if (this.editMode) {
+      // Update product logic
+    } else {
+      // Add product logic
+    }
+    // Reset form after submission
+  //  this.onReset();
+  }
 
-  // onSubmit(): void {
-  //   const formValue = this.productForm.value;
-    
-  //   if (this.editMode) {
-  //     const index = this.products.findIndex(p => p.id === this.editProductId);
-  //     if (index !== -1) {
-  //       this.products[index] = { id: this.editProductId!, ...formValue };
-  //     }
-  //   } else {
-  //     const newProduct: Product = {
-  //       id: this.products.length + 1,
-  //       ...formValue
-  //     };
-  //     this.products.push(newProduct);
-  //   }
+  onReset(form: NgForm): void {
+    form.resetForm();
+    this.selectedFile = null;
+    this.product = new Product(); // Reset product
+    this.editMode = false;
+  }
 
-  //   this.productForm.reset();
-  //   this.editMode = false;
-  //   this.editProductId = null;
-  // }
+  onFileSelected(event: Event): void {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files[0]) {
+      this.selectedFile = fileInput.files[0];
+      const img = new Image();
+      img.onload = () => {
+        if (img.width !== 500 || img.height !== 500) {
+          alert('Image size must be 500x500 pixels.');
+          this.selectedFile = null;
+          // Reset file input
+          fileInput.value = '';
+        }
+      };
+      img.src = URL.createObjectURL(this.selectedFile);
+    }
+  }
 
-  // onEdit(product: Product): void {
-  //   this.productForm.patchValue(product);
-  //   this.editMode = true;
-  //   this.editProductId = product.id;
-  // }
+  toggleSidebar(): void {
+    this.isSidebarHidden = !this.isSidebarHidden;
+  }
 
-  // onDelete(product: Product): void {
-  //   this.products = this.products.filter(p => p.id !== product.id);
-  // }
+  setNavOption(navOption: string): void {
+    this.navOption = navOption;
+  }
 
+  onEdit(product: Product): void {
+    this.product = { ...product }; // Pre-fill the form for editing
+    this.editMode = true;
+    this.navOption = 'addProduct';
+  }
+
+  onDelete(product: Product): void {
+    // Implement delete logic
+  }
+
+  logout(): void {
+    // Implement logout logic
+  }
 }
