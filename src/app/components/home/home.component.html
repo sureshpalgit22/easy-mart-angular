@@ -8,20 +8,26 @@
   </div>
 </div>
 
-<div class="carousel">
-  <button class="prev">&#10094;</button>
-  <div class="carousel-items">
-    <div class="carousel-item" *ngFor="let product of products">
-      <div class="product-card">
-        <img [src]="product.image" alt="{{ product.name }}" class="carousel-image">
-        <div class="product-info">
-          <h2>{{ product.name }}</h2>
-          <p>{{ product.description }}</p>
-          <button mat-raised-button color="primary">Add to Cart</button>
-        </div>
+<div>
+  <a routerLink="/seller-dashboard">Go to Seller Page</a>
+</div>
+
+<section id="product1" class="section-1">
+  <h2>Featured Products</h2>
+  <p></p>
+  <div class="pro-container">
+    <div class="pro" *ngFor="let product of products">
+      <img [src]="product.image" alt="{{ product.name }}">
+      <div class="des">
+        <span>{{ product.brandName }}</span>
+        <h5>{{ product.description }}</h5>
+        <h4>{{ product.price | currency }}</h4>
       </div>
+      <a href="#"><i class="fal fa-shopping-cart"></i></a>
     </div>
   </div>
-  <button class="next">&#10095;</button>
-</div>
+</section>
+
+
+
 

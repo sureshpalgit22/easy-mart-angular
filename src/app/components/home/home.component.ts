@@ -7,28 +7,120 @@ import { UrlConstant } from 'src/app/services/url-constant.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   users:any;
   products = [
     {
       name: 'Product 1',
-      description: 'Description for Product 1',
-      image: 'assets/images/perfume-6518634_1280.jpg'
+      brandName:'ADDIDAS',
+      description: 'Half t-shirt for men',
+      image: 'assets/images/ai-generated-8557635_1280.jpg',
+      price:57
     },
     {
       name: 'Product 2',
-      description: 'Description for Product 2',
-      image: 'assets/images/ai-generated-8679407_1280.png'
+      description: 'Cartoon Wallpaper for Home wall',
+      image: 'assets/images/ai-generated-8862797_1280.png',
+      brandName:'PUMA',
+      price:99
     },
     {
       name: 'Product 3',
-      description: 'Description for Product 1',
-      image: 'assets/images/pexels-mikebirdy-170811.jpg'
+      description: 'SUV Car',
+      image: 'assets/images/pexels-mikebirdy-170811.jpg',
+      brandName:'TATA MOTORS',
+      price:10000
     },
     {
       name: 'Product 4',
-      description: 'Description for Product 2',
-      image: 'assets/images/pexels-efrem-efre-2786187-13439836.jpg'
+      description: 'Soprt half t-shirt',
+      image: 'assets/images/tshirt-8726721_1280.jpg',
+      brandName:'ADDIDAS',
+      price:68
+    },
+    {
+      name: 'Product 1',
+      brandName:'ADDIDAS',
+      description: 'Half t-shirt for men',
+      image: 'assets/images/ai-generated-8557635_1280.jpg',
+      price:57
+    },
+    {
+      name: 'Product 2',
+      description: 'Cartoon Wallpaper for Home wall',
+      image: 'assets/images/ai-generated-8862797_1280.png',
+      brandName:'PUMA',
+      price:99
+    },
+    {
+      name: 'Product 3',
+      description: 'SUV Car',
+      image: 'assets/images/pexels-mikebirdy-170811.jpg',
+      brandName:'TATA MOTORS',
+      price:10000
+    },
+    {
+      name: 'Product 4',
+      description: 'Soprt half t-shirt',
+      image: 'assets/images/tshirt-8726721_1280.jpg',
+      brandName:'ADDIDAS',
+      price:68
+    },
+    {
+      name: 'Product 1',
+      brandName:'ADDIDAS',
+      description: 'Half t-shirt for men',
+      image: 'assets/images/ai-generated-8557635_1280.jpg',
+      price:57
+    },
+    {
+      name: 'Product 2',
+      description: 'Cartoon Wallpaper for Home wall',
+      image: 'assets/images/ai-generated-8862797_1280.png',
+      brandName:'PUMA',
+      price:99
+    },
+    {
+      name: 'Product 3',
+      description: 'SUV Car',
+      image: 'assets/images/pexels-mikebirdy-170811.jpg',
+      brandName:'TATA MOTORS',
+      price:10000
+    },
+    {
+      name: 'Product 4',
+      description: 'Soprt half t-shirt',
+      image: 'assets/images/tshirt-8726721_1280.jpg',
+      brandName:'ADDIDAS',
+      price:68
+    },
+    {
+      name: 'Product 1',
+      brandName:'ADDIDAS',
+      description: 'Half t-shirt for men',
+      image: 'assets/images/ai-generated-8557635_1280.jpg',
+      price:57
+    },
+    {
+      name: 'Product 2',
+      description: 'Cartoon Wallpaper for Home wall',
+      image: 'assets/images/ai-generated-8862797_1280.png',
+      brandName:'PUMA',
+      price:99
+    },
+    {
+      name: 'Product 3',
+      description: 'SUV Car',
+      image: 'assets/images/pexels-mikebirdy-170811.jpg',
+      brandName:'TATA MOTORS',
+      price:10000
+    },
+    {
+      name: 'Product 4',
+      description: 'Soprt half t-shirt',
+      image: 'assets/images/tshirt-8726721_1280.jpg',
+      brandName:'ADDIDAS',
+      price:68
     },
     // Add more products here
   ];
@@ -66,55 +158,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     // Add more products here
   ];
 
-  currentIndex = 0;
-  autoSlideInterval: any;
+
 
   constructor(private dataService:DataService,  private urlConstant: UrlConstant) { }
 
   ngOnInit() {
   //  this.getAllUsers();
-    this.startAutoSlide();
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
-
-    if (prevButton) {
-      prevButton.addEventListener('click', () => this.prevSlide());
-    }
-
-    if (nextButton) {
-      nextButton.addEventListener('click', () => this.nextSlide());
-    }
-  }
-
-  ngOnDestroy() {
-    // Clear the interval when the component is destroyed to avoid memory leaks
-    if (this.autoSlideInterval) {
-      clearInterval(this.autoSlideInterval);
-    }
-  }
-
-  startAutoSlide() {
-    this.autoSlideInterval = setInterval(() => {
-      this.nextSlide();
-    }, 3000); // Change slide every 3 seconds
-  }
-
-  prevSlide() {
-    this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.products.length - 1;
-    this.updateCarousel();
-  }
-
-  nextSlide() {
-    this.currentIndex = (this.currentIndex < this.products.length - 1) ? this.currentIndex + 1 : 0;
-    this.updateCarousel();
-  }
-
-  updateCarousel() {
-    const carouselItems = document.querySelector('.carousel-items') as HTMLElement;
-
-    if (carouselItems) {
-      carouselItems.style.transform = `translateX(-${this.currentIndex * 100}%)`;
-    }
+ 
   }
 
   getAllUsers(){

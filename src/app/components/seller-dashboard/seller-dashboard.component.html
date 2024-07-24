@@ -1,0 +1,65 @@
+<div class="seller-dashboard-container">
+  <nav class="sidebar">
+    <div class="seller-info">
+      <div class="circle">{{ sellerInitial }} S</div>
+      <div class="greeting">
+        <p>Hello!</p>
+        <p>{{ sellerName }} Suresh Chandra Pal</p>
+      </div>
+      <hr>
+    </div>
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Add Product</a></li>
+      <li><a href="#">Manage Products</a></li>
+      <li><a href="#">Orders</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </nav>
+  
+  <div class="main-content">
+    <h2 class="text-center">Seller Dashboard</h2>
+    
+    <!-- Form for adding/updating products -->
+    <!-- <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Product Name:</label>
+        <input id="name" formControlName="name" required>
+      </div>
+      <div>
+        <label for="price">Product Price:</label>
+        <input id="price" formControlName="price" required type="number">
+      </div>
+      <div>
+        <label for="description">Product Description:</label>
+        <textarea id="description" formControlName="description" required></textarea>
+      </div>
+      <button type="submit">{{ editMode ? 'Update' : 'Add' }} Product</button>
+    </form> -->
+
+    <!-- Table to display products -->
+    <!-- <h3>Product List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.description }}</td>
+          <td>
+            <button (click)="onEdit(product)">Edit</button>
+            <button (click)="onDelete(product)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+  </div>
+</div>

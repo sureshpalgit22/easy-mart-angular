@@ -19,6 +19,9 @@ import { DataService } from './services/data.service';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
+import { SellerDashboardComponent } from './components/seller-dashboard/seller-dashboard.component';
+import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 
 
@@ -32,7 +35,10 @@ import { FormsModule } from '@angular/forms';
     ProductComponent,
     CartComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SellerDashboardComponent,
+    CustomerDashboardComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

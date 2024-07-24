@@ -1,5 +1,5 @@
 // signup.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { User } from 'src/app/entity/user';
@@ -10,11 +10,14 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
  user:User;
   confirmPassword: string = '';
 
   constructor(private dataService: DataService, private router: Router) {}
+  ngOnInit(){
+   
+  }
 
   onSubmit() {
     if (this.user.password !== this.confirmPassword) {
