@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Product } from 'src/app/entity/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-seller-dashboard',
@@ -17,7 +18,7 @@ export class SellerDashboardComponent implements OnInit {
   sellerInitial: string = 'S'; // Example value, replace with actual data
   product: Product = new Product();
   
-  constructor() {}
+  constructor(private productService:ProductService) {}
 
   ngOnInit() {
     // Load products, seller details, etc. from service
@@ -28,6 +29,17 @@ export class SellerDashboardComponent implements OnInit {
       // Update product logic
     } else {
       // Add product logic
+      
+     this.product.sellerId='669bbab4a06f18826162549a';
+      this.productService.saveOrUpdateProduct(this.product).subscribe(
+        data => {
+          console.log("data= "+JSON.stringify(data));
+          
+        },
+        error => {
+          //this.appComponent.setErrorMessage(error);
+        }
+      );
     }
     // Reset form after submission
   //  this.onReset();

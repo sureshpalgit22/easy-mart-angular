@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Product } from '../entity/product';
+import { DataService } from './data.service';
+import { UrlConstant } from './url-constant.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  // private url : any;
+  // const url = `${this.urlConstant.SERVER_PORT}user`;
+ 
 
-  private apiUrl = 'http://localhost:8080/api/products'; // Change to your backend URL
+  constructor(private dataService: DataService,private urlConstant: UrlConstant) {
+    
+   }
 
-  constructor(private http: HttpClient) { }
-
-  getProducts(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+ 
+  saveOrUpdateProduct(product:Product){
+    const url = `${this.urlConstant.SERVER_PORT}`;
+    return this.dataService.addObject(url+ 'product', JSON.stringify(product));
   }
 }
