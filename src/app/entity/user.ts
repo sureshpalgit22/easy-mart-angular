@@ -13,3 +13,8 @@ export class User {
     //   this.roles = roles;
     // }
   }
+
+  export class UserLogin{
+ emailOrMobileNumber:string;
+ password:string;
+  }

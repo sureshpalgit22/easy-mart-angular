@@ -48,7 +48,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     MatButtonModule,
     MatCardModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FormsModule,
   ],
   providers: [DataService,UrlConstant],
   bootstrap: [AppComponent]

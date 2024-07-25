@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../entity/product';
 import { DataService } from './data.service';
@@ -22,4 +22,11 @@ export class ProductService {
     const url = `${this.urlConstant.SERVER_PORT}`;
     return this.dataService.addObject(url+ 'product', JSON.stringify(product));
   }
+  checkLogin(emailOrMobileNumber,password){
+    const url = `${this.urlConstant.SERVER_PORT}`;
+    const params: URLSearchParams = new URLSearchParams();
+    params.set('userEmailOrMobileNumber', emailOrMobileNumber);
+    params.set('password', password);
+    return this.dataService.getObjects(url + 'user/check-login?'+params);
+}
 }

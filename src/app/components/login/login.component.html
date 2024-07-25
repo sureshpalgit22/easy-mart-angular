@@ -1,3 +1,36 @@
-<p>
-  login works!
-</p>
+<app-header></app-header>
+<div class="row">
+  <div class="col-md-4">
+    <img style="width: 100%;" src="assets/images/login.jpg" alt="EasyMart Logo" class="logo">
+  </div>
+  <div class="col-md-4">
+    <h2>Login</h2>
+    <div class="login-form">
+      <form>
+        <div class="row">
+          <div class="col-md-5 form-group">
+            <input type="text" class="form-control inputMaterial" placeholder="Enter Email/ Mobile Number" [(ngModel)]="login.emailOrMobileNumber" name="emailOrMobileNumber" #emailOrMobileNumber="ngModel">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5 form-group">
+            <input type="password" class="form-control inputMaterial" placeholder="Enter Password" [(ngModel)]="login.password" name="password" #password="ngModel">
+          </div>
+        </div>
+         
+        <div *ngIf="isError" class="text-danger">
+          {{ errorMessage }}
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 form-group">
+            <button type="submit" class="btn btn-primary login-btn" (click)="checkLogin(login)" >Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-4">
+
+  </div>
+</div>
