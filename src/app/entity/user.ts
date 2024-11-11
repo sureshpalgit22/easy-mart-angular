@@ -3,7 +3,7 @@ export class User {
     username: string;
     password: string;
     email: string;
-    roles: string[];  // Array of roles
+    role: string;
   
     // constructor(id: string, username: string, password: string, email: string, roles: string[]) {
     //   this.id = id;
@@ -15,6 +15,8 @@ export class User {
   }
 
   export class UserLogin{
- emailOrMobileNumber:string;
- password:string;
+  emailOrMobileNumber:string;
+   password:string;
   }
+
+  

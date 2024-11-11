@@ -11,21 +11,22 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit{
- user:User;
+  user: User = new User();
   confirmPassword: string = '';
 
   constructor(private dataService: DataService, private router: Router) {}
-  ngOnInit(){
+  ngOnInit() {
    
   }
 
   onSubmit() {
+    
     if (this.user.password !== this.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
-    const url = 'http://localhost:8080/user';
+    const url = 'http://localhost:8080/user/signup';
     this.dataService.addObject(url, this.user).subscribe(response => {
       console.log('User created successfully!', response);
       this.router.navigate(['/login']);
