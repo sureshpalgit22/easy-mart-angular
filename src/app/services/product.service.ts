@@ -19,6 +19,7 @@ export class ProductService {
 
  
   saveOrUpdateProduct(product:Product){
+    console.log("reached here saveOrUpdateProduct");
     const url = `${this.urlConstant.SERVER_PORT}`;
     return this.dataService.addObject(url+ 'product', JSON.stringify(product));
   }

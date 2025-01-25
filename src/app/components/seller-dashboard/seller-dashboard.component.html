@@ -30,43 +30,70 @@
     </div>
       <!-- Dashboard End Here -->
 
-       <!-- Add Product Start Here -->
-    <div *ngIf="navOption=='addProduct'">
-      <h2 class="text-center">Add Product</h2>
-      <form (ngSubmit)="onSubmit()" #productForm="ngForm">
-        <div>
-          <label for="name">Product Name:</label>
-          <input id="name" name="name" [(ngModel)]="product.name" required>
+     <!-- Add Product Start Here -->
+<div *ngIf="navOption=='addProduct'" class="container py-5">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-header bg-primary text-white text-center">
+      <h2>{{ editMode ? 'Edit Product' : 'Add Product' }}</h2>
+    </div>
+    <div class="card-body p-4">
+      <form (ngSubmit)="onSubmit()" #productForm="ngForm" novalidate>
+        <div class="mb-3">
+          <label for="name" class="form-label">Product Name</label>
+          <input id="name" name="name" [(ngModel)]="product.name" required 
+            class="form-control rounded-3">
         </div>
-        <div>
-          <label for="price">Product Price:</label>
-          <input id="price" name="price" [(ngModel)]="product.price" required type="number">
+
+        <div class="mb-3">
+          <label for="price" class="form-label">Product Price</label>
+          <input id="price" name="price" [(ngModel)]="product.price" required type="number"
+            class="form-control rounded-3">
         </div>
-        <div>
-          <label for="description">Product Description:</label>
-          <textarea id="description" name="description" [(ngModel)]="product.description" required></textarea>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Product Description</label>
+          <textarea id="description" name="description" [(ngModel)]="product.description" required 
+            class="form-control rounded-3" rows="4"></textarea>
         </div>
-        <div>
-          <label for="brandName">Brand Name:</label>
-          <input id="brandName" name="brandName" [(ngModel)]="product.brandName" required>
+
+        <div class="mb-3">
+          <label for="brandName" class="form-label">Brand Name</label>
+          <input id="brandName" name="brandName" [(ngModel)]="product.brandName" required 
+            class="form-control rounded-3">
         </div>
-        <div>
-          <label for="productCategory">Product Category:</label>
-          <input id="productCategory" name="productCategory" [(ngModel)]="product.productCategory" required>
+
+        <div class="mb-3">
+          <label for="productCategory" class="form-label">Product Category</label>
+          <input id="productCategory" name="productCategory" [(ngModel)]="product.productCategory" required 
+            class="form-control rounded-3">
         </div>
-        <div>
-          <label for="quantity">Quantity:</label>
-          <input id="quantity" name="quantity" [(ngModel)]="product.quantity" required type="number">
+
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input id="quantity" name="quantity" [(ngModel)]="product.quantity" required type="number" 
+            class="form-control rounded-3">
         </div>
-        <div>
-          <label for="image">Product Image:</label>
-          <input id="image" type="file" (change)="onFileSelected($event)" required>
+
+        <div class="mb-4">
+          <label for="image" class="form-label">Product Image</label>
+          <input id="image" type="file" (change)="onFileSelected($event)" required
+            class="form-control rounded-3">
         </div>
-        <button type="submit">{{ editMode ? 'Update' : 'Save' }} Product</button>
-        <button type="button" (click)="onReset(productForm)" class="text-right">Reset</button>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-success rounded-pill px-4">
+            {{ editMode ? 'Update' : 'Save' }} Product
+          </button>
+          <button type="button" (click)="onReset(productForm)" class="btn btn-secondary rounded-pill px-4">
+            Reset
+          </button>
+        </div>
       </form>
     </div>
-     <!-- Add Product End Here -->
+  </div>
+</div>
+<!-- Add Product End Here -->
+
 
        <!-- Manage Products Start Here -->
     <div *ngIf="navOption=='manageProducts'">

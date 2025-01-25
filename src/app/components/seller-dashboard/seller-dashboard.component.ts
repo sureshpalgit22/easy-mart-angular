@@ -24,26 +24,7 @@ export class SellerDashboardComponent implements OnInit {
     // Load products, seller details, etc. from service
   }
 
-  onSubmit(): void {
-    if (this.editMode) {
-      // Update product logic
-    } else {
-      // Add product logic
-      
-     this.product.sellerId='669bbab4a06f18826162549a';
-      this.productService.saveOrUpdateProduct(this.product).subscribe(
-        data => {
-          console.log("data= "+JSON.stringify(data));
-          
-        },
-        error => {
-          //this.appComponent.setErrorMessage(error);
-        }
-      );
-    }
-    // Reset form after submission
-  //  this.onReset();
-  }
+
 
   onReset(form: NgForm): void {
     form.resetForm();
@@ -52,23 +33,46 @@ export class SellerDashboardComponent implements OnInit {
     this.editMode = false;
   }
 
+
   onFileSelected(event: Event): void {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files[0]) {
-      this.selectedFile = fileInput.files[0];
-      const img = new Image();
-      img.onload = () => {
-        if (img.width !== 500 || img.height !== 500) {
-          alert('Image size must be 500x500 pixels.');
-          this.selectedFile = null;
-          // Reset file input
-          fileInput.value = '';
-        }
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64String = reader.result as string;
+  
+        // Validate and ensure the image is in correct dimensions if needed
+        const img = new Image();
+        img.onload = () => {
+          if (img.width !== 500 || img.height !== 500) {
+            alert('Image size must be 500x500 pixels.');
+            this.selectedFile = null;
+            fileInput.value = '';
+          } else {
+            this.product.image = base64String; // Assign Base64 string to the product object
+          }
+        };
+        img.src = base64String;
       };
-      img.src = URL.createObjectURL(this.selectedFile);
+      reader.readAsDataURL(fileInput.files[0]); // Read file as Data URL
     }
   }
 
+ 
+
+  onSubmit(): void {
+    this.product.sellerId = '669bbab4a06f18826162549a'; // Hardcoding sellerId for now
+    this.productService.saveOrUpdateProduct(this.product).subscribe(
+      (data) => {
+        console.log('Product saved:', data);
+        alert('Product added successfully!');
+      },
+      (error) => {
+        console.error('Error saving product:', error);
+        alert('Error saving product.');
+      }
+    );
+  }
   toggleSidebar(): void {
     this.isSidebarHidden = !this.isSidebarHidden;
   }
