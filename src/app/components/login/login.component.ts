@@ -21,33 +21,38 @@ export class LoginComponent implements OnInit {
 
   checkLogin(userLogin) {
     console.log(userLogin);
+    this.login=userLogin;
     this.service.checkLogin(userLogin.emailOrMobileNumber, userLogin.password).subscribe(
       (data: any) => {
         this.checkLoginResult(data);
       },
       (error) => {
         this.isError=true;
-        this.errorMessage = error;
+      //  debugger
+        this.errorMessage = "please enter the valid user id and passward";
       }
     )
   }
   checkLoginResult(data) {
-    if (data === 'SUCCESS') {
-      this.router.navigate(['/seller-dashboard']);
-    } else if (data === 'INVALID_EMAIL_OR_MOBILE_NUMBER') {
-      this.isError = true;
-      this.errorMessage = 'Invalid email or mobile number';
-      setTimeout(() => {
-        this.isError = false;
-        this.errorMessage = '';
-      }, 5000); 
-    } else if (data === 'INVALID_PASSWORD') {
-      this.isError = true;
-      this.errorMessage = 'Invalid password';
-      setTimeout(() => {
-        this.isError = false;
-        this.errorMessage = '';
-      }, 5000); 
-    }
+    if (data) {
+      this.router.navigate(['/seller-dashboard'],{
+        queryParams: { name: data.username }
+      });
+    } 
+    // else if (data === 'INVALID_EMAIL_OR_MOBILE_NUMBER') {
+    //   this.isError = true;
+    //   this.errorMessage = 'Invalid email or mobile number';
+    //   setTimeout(() => {
+    //     this.isError = false;
+    //     this.errorMessage = '';
+    //   }, 5000); 
+    // } else if (data === 'INVALID_PASSWORD') {
+    //   this.isError = true;
+    //   this.errorMessage = 'Invalid password';
+    //   setTimeout(() => {
+    //     this.isError = false;
+    //     this.errorMessage = '';
+    //   }, 5000); 
+    // }
   }
 }
