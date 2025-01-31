@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SellerDashboardComponent } from './components/seller-dashboard/seller-dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login/customer', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductComponent },
   { path: 'cart', component: CartComponent },

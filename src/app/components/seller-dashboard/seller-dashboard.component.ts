@@ -14,8 +14,8 @@ export class SellerDashboardComponent implements OnInit {
   navOption: string = '';
   selectedFile: File | null = null;
   editMode: boolean = false;
-  sellerName: string = 'Suresh Chandra Pal'; // Example value, replace with actual data
-  sellerInitial: string = 'S'; // Example value, replace with actual data
+  sellerName: string = 'Rahul Chhatait'; // Example value, replace with actual data
+  sellerInitial: string = 'R'; // Example value, replace with actual data
   product: Product = new Product();
   
   constructor(private productService:ProductService) {}
@@ -61,7 +61,7 @@ export class SellerDashboardComponent implements OnInit {
  
 
   onSubmit(): void {
-    this.product.sellerId = '669bbab4a06f18826162549a'; // Hardcoding sellerId for now
+    this.product.sellerId = '669bd68fd711db4c6c920879'; // Hardcoding sellerId for now
     this.productService.saveOrUpdateProduct(this.product).subscribe(
       (data) => {
         console.log('Product saved:', data);

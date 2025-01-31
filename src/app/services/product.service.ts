@@ -9,12 +9,15 @@ import { UrlConstant } from './url-constant.service';
   providedIn: 'root'
 })
 export class ProductService {
-  // private url : any;
-  // const url = `${this.urlConstant.SERVER_PORT}user`;
+   private url : any;
+    // user: User = new User();
+   
  
-
+ // const url = `${this.urlConstant.SERVER_PORT}`;
   constructor(private dataService: DataService,private urlConstant: UrlConstant) {
-    
+
+    this.url = `${this.urlConstant.SERVER_PORT}`;
+
    }
 
  
@@ -24,10 +27,14 @@ export class ProductService {
     return this.dataService.addObject(url+ 'product', JSON.stringify(product));
   }
   checkLogin(emailOrMobileNumber,password){
-    const url = `${this.urlConstant.SERVER_PORT}`;
     const params: URLSearchParams = new URLSearchParams();
     params.set('userEmailOrMobileNumber', emailOrMobileNumber);
     params.set('password', password);
-    return this.dataService.getObjects(url + 'user/check-login?'+params);
+    return this.dataService.getObjects(this.url + 'user/check-login?'+params);
 }
+  signUp(user){
+    const params: URLSearchParams = new URLSearchParams();
+    return this.dataService.addObject(this.url+'user/signup',JSON.stringify(user));
+
+  }
 }
