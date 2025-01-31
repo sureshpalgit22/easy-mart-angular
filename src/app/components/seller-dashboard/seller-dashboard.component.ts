@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/entity/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -14,14 +15,18 @@ export class SellerDashboardComponent implements OnInit {
   navOption: string = '';
   selectedFile: File | null = null;
   editMode: boolean = false;
-  sellerName: string = 'Rahul Chhatait'; // Example value, replace with actual data
-  sellerInitial: string = 'R'; // Example value, replace with actual data
+  sellerName: string; // Example value, replace with actual data
+  sellerInitial: string; // Example value, replace with actual data
   product: Product = new Product();
   
-  constructor(private productService:ProductService) {}
+  constructor(private productService:ProductService,private router: Router,private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // Load products, seller details, etc. from service
+    this.route.queryParams.subscribe(params => {
+      console.log(params['name']); // Get email from queryParams
+      this.sellerName = params['name'];
+      this.sellerInitial =this.sellerName.charAt(0);
+    });
   }
 
 
@@ -92,6 +97,11 @@ export class SellerDashboardComponent implements OnInit {
   }
 
   logout(): void {
-    // Implement logout logic
+    debugger
+    localStorage.removeItem('authToken'); // or sessionStorage.removeItem('authToken');
+    // Clear user-related data if needed
+    sessionStorage.clear(); // Clear session storage (optional)
+    // Redirect to login page
+    this.router.navigate(['/login/customer']); // Ensure `Router` is injected in the constructor
   }
 }
